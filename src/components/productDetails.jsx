@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import withRouter from '../utils/withRouter';
 
 class ProductDetails extends Component {
   handleSave = () => {
@@ -6,13 +7,18 @@ class ProductDetails extends Component {
   };
 
   render() {
+    const { router } = this.props;
+
+    console.log(this.props)
+
     return (
       <div>
-        <h1>Product Details - {this.props.match.params.id} </h1>
+        <h1>Product Details - {router.params.id} </h1>
+          <button onClick={() => router.navigate('/products')}>Back</button>
         <button onClick={this.handleSave}>Save</button>
       </div>
     );
   }
 }
 
-export default ProductDetails;
+export default withRouter(ProductDetails);
